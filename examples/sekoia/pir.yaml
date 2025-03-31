@@ -1,0 +1,18 @@
+# Respective importance of each sector context to the evaluating organization
+sector_distribution:
+  government: 3
+  finance: 2
+
+# Desired montly production rate of each STIX object category
+monthly:
+  indicators: 10000
+  campaigns_reports: 80
+  malwares_tools: 40
+  intrusionsets_threatactors: 16
+  vulnerabilities: 8000
+  courseofactions: 8
+  # --
+  total: 30000
+
+# Only check the STIX validity of 10% random STIX objects (faster eval)
+validity_sampling_rate: 0.1

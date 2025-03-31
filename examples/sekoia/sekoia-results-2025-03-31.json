@@ -1,0 +1,17 @@
+{
+    "scores": {
+        "relevance": {
+            "applicability": 69.7536268198748,
+            "accuracy": 65.16068285829962,
+            "timeliness": 84.50024245311037
+        },
+        "usability": {
+            "machine_readability": 94.49063651347258,
+            "consumability": 100,
+            "actionability": 83.32524440418449
+        },
+        "global": {
+            "score": 82.87173884149031
+        }
+    }
+}
