@@ -1,0 +1,19 @@
+{
+    "id": "bundle--0d5b67d1-68a7-4d80-a889-9a89197a17dd",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.302614Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--f522e018-c70f-4f8f-a78c-1d7900dbef25",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Communications sector as a target",
+            "sectors": [
+                "communications"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

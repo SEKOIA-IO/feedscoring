@@ -1,0 +1,19 @@
+{
+    "id": "bundle--84ef0666-624e-468c-a526-4d35f781a6b8",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.301567Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--4665ca96-4e28-4af5-9a50-49ba65b39c56",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Commercial sector as a target",
+            "sectors": [
+                "commercial"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

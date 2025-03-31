@@ -1,0 +1,19 @@
+{
+    "id": "bundle--c71fa117-6e5a-44d0-a40e-0517fd0202d4",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.327165Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--983bf966-a56b-4f3c-8637-6c56b94b3b2f",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Pharmaceuticals sector as a target",
+            "sectors": [
+                "pharmaceuticals"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

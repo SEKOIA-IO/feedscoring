@@ -1,0 +1,19 @@
+{
+    "id": "bundle--18f94728-5f5d-4ac2-8ac3-230666fc0b23",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.329303Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--71c4726c-f45e-4e22-8616-2081a536c6bc",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Technology sector as a target",
+            "sectors": [
+                "technology"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

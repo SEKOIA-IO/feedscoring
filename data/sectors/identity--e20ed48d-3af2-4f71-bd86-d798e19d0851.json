@@ -1,0 +1,19 @@
+{
+    "id": "bundle--a3bfbdc3-517e-443b-9a72-1c9fd1b1d69f",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.33241Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--e20ed48d-3af2-4f71-bd86-d798e19d0851",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Utilities sector as a target",
+            "sectors": [
+                "utilities"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

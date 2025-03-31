@@ -1,0 +1,19 @@
+{
+    "id": "bundle--a9bb1af5-7862-483a-98b8-72182edfe3cd",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.316245Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--93f86a60-cf1f-4285-882e-6691bcbfddb9",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Healthcare sector as a target",
+            "sectors": [
+                "healthcare"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

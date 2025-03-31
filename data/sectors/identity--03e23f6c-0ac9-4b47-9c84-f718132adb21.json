@@ -1,0 +1,19 @@
+{
+    "id": "bundle--674603fe-dbdf-48d2-9301-f1f6c1df5114",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.317437Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--03e23f6c-0ac9-4b47-9c84-f718132adb21",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Hospitality Leisure sector as a target",
+            "sectors": [
+                "hospitality-leisure"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

@@ -1,0 +1,33 @@
+[project]
+name = "feedscoring"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Jerome Fellus",email = "jerome.fellus@sekoia.fr"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests (>=2.32.3,<3.0.0)",
+    "taxii2-client[v20] (>=2.3.0,<3.0.0)",
+    "gitpython (>=3.1.44,<4.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
+    "rich (>=13.9.4,<14.0.0)",
+    "orjson (>=3.10.15,<4.0.0)",
+    "stix2-validator (>=3.2.0,<4.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)"
+]
+
+[build-system]
+requiresy = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+[tool.poetry.scripts]
+feedscoring = "feedscoring.main:main"
+download-feed = "feedscoring.download:main"
+
+[tool.ruff]
+line-length = 169

@@ -1,0 +1,19 @@
+{
+    "id": "bundle--649f6db4-7ee7-4f33-af58-0af3e2d9fe33",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.324884Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--8004c490-64c3-46a4-b78b-2806e0d08ce5",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Mining sector as a target",
+            "sectors": [
+                "mining"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

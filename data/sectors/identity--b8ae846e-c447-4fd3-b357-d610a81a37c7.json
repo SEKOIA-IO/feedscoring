@@ -1,0 +1,19 @@
+{
+    "id": "bundle--97282e9f-f41f-48a6-bdb8-8e8da6f82469",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.313176Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--b8ae846e-c447-4fd3-b357-d610a81a37c7",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Government National sector as a target",
+            "sectors": [
+                "government-national"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

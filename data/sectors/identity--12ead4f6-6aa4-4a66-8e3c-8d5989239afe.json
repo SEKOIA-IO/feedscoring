@@ -1,0 +1,19 @@
+{
+    "id": "bundle--3657db4b-db57-4205-a414-64a34e53e169",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.321592Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--12ead4f6-6aa4-4a66-8e3c-8d5989239afe",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Water sector as a target",
+            "sectors": [
+                "water"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

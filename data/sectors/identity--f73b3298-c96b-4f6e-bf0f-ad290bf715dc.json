@@ -1,0 +1,19 @@
+{
+    "id": "bundle--9e479323-f8ef-4436-b292-7cd1ea333eef",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.314195Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--f73b3298-c96b-4f6e-bf0f-ad290bf715dc",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Government Public Services sector as a target",
+            "sectors": [
+                "government-public-services"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

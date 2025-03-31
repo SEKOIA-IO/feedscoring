@@ -1,0 +1,19 @@
+{
+    "id": "bundle--f43ddc75-48f7-4e01-bacc-b8dbfe8e6f85",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.308954Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--944ebdb0-97ef-463b-a3a9-52da871fcf64",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Financial Services sector as a target",
+            "sectors": [
+                "financial-services"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}

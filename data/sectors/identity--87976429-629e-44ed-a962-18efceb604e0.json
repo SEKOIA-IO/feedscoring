@@ -1,0 +1,19 @@
+{
+    "id": "bundle--04df6466-d1fe-4263-93a9-b06008a5e4a5",
+    "objects": [
+        {
+            "created": "2021-03-13T20:09:21.303701Z",
+            "created_by_ref": "identity--8ce3f695-d5a4-4dc8-9e93-a65af453a31a",
+            "id": "identity--87976429-629e-44ed-a962-18efceb604e0",
+            "identity_class": "class",
+            "modified": "2021-12-01T16:19:51.601791Z",
+            "name": "Construction sector as a target",
+            "sectors": [
+                "construction"
+            ],
+            "spec_version": "2.1",
+            "type": "identity"
+        }
+    ],
+    "type": "bundle"
+}
