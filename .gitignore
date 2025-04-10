@@ -3,3 +3,5 @@ __pycache__
 /.pyo
 /.env
 results.json
+/run.sh
+/docker-compose.yaml
