@@ -112,14 +112,13 @@ poetry run feedscoring -H --since 6m -vvv
 ### As a CTI analyst, you want to check your feeds are relevant and aligned with your PIR
 
 Evaluate a feed using specific Priority Intelligence Requirements from `examples/pir.yaml` (see [examples/pir.yaml](examples/pir.yaml) for expected file format).
-Push updated scores every 5 minutes to an HTTP POST webhook with a JSON body
 ```bash
-poetry run feedscoring -H --since 6m -vvv -f examples/pir.yaml --webhook http://localhost:8000/scores --every 300s
+poetry run feedscoring -H --since 6m -vvv -f examples/pir.yaml 
 ```
 
 ### As a tool to forward the result to a solution (Threat Intelligence Platform / CTI marketplace)
 
-Evaluate a feed regularly and ush updated scores every 5 minutes to an HTTP POST webhook with a JSON body
+Evaluate a feed regularly and push updated scores every 5 minutes to an HTTP POST webhook with a JSON body
 ```bash
 poetry run feedscoring -H --since 6m -vvv --webhook http://localhost:8000/scores --every 300s
 ```
