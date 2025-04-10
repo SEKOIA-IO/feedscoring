@@ -166,8 +166,12 @@ def update_scores():
     scores["usability"]["machine_readability"] = minmax(
         (0, 100),
         (
-            1.0  # compliance with STIX format already gives 50% of the score
-            + stix_validity / nb_validated_objects  # average STIX validity score
+            (
+                1.0  # compliance with STIX format already gives 50% of the score
+                + stix_validity / nb_validated_objects  # average STIX validity score
+            )
+            if nb_validated_objects
+            else 0.0
         )
         * 50.0,
     )
