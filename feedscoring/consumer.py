@@ -82,12 +82,14 @@ def consumer(
     url: str = SETTINGS.url,
     api_key: str = API_KEY,
     page_size: int = SETTINGS.batch_size,
-    since: datetime | timedelta | None = SETTINGS.since,
+    since: datetime | timedelta | None = None,
     types: list[str] | None = None,
 ):
     """A factory function for consumers. Consumers are generators that yield STIX objects from a CTI feed."""
     if isinstance(since, timedelta):
         since = datetime.now() - since
+    else:
+        since = SETTINGS.since
 
     try:
         c = CONSUMERS[type.lower()]

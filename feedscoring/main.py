@@ -1,9 +1,10 @@
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import logging
 import math
-import os
+from pathlib import Path
+import pickle
 from random import random
 from sys import stderr
 from time import time
@@ -72,6 +73,33 @@ min_date: datetime | None = None
 max_date: datetime | None = None
 start_time = time()
 
+
+# Load saved state if asked
+if SETTINGS.load and Path(SETTINGS.load).is_file():
+    with open(SETTINGS.load, "rb") as f:
+        data = pickle.load(f)
+        for k, v in data.get("counters", {}).items():
+            counters[k].update(v)
+        for k, v in data.get("components", {}).items():
+            components[k].update(v)
+        for k, v in data.get("scores", {}).items():
+            scores[k].update(v)
+        min_date = parse_datetime(data["min_date"])
+        max_date = parse_datetime(data["max_date"])
+        nb_objects = data["nb_objects"]
+        sum_confidence = data["sum_confidence"]
+        sum_confidence_2 = data["sum_confidence_2"]
+        report_publish_to_create_hours = data["report_publish_to_create_hours"]
+        nb_indicators_updated = data["nb_indicators_updated"]
+        indicator_delay_hours = data["indicator_delay_hours"]
+        stix_validity = data["stix_validity"]
+        nb_validated_objects = data["nb_validated_objects"]
+        indicators_confidence = data["indicators_confidence"]
+        indicators_having_pattern = data["indicators_having_pattern"]
+        indicators_having_validity = data["indicators_having_validity"]
+        indicators_having_killchain = data["indicators_having_killchain"]
+        SETTINGS.since = max_date + timedelta(microseconds=1) if max_date else None
+
 # Collect sectors by consuming the feed filtered on identity objects
 logging.info("Collecting sectors from the feed...")
 SECTORS = {}
@@ -79,6 +107,33 @@ for o in consumer(types=["identity"], since=None):
     if o.get("identity_class") == "class" and o.get("sectors"):
         SECTORS[o["id"]] = o["sectors"][0]
 logging.info(f"Collected {len(SECTORS)} sectors")
+
+
+def save_state():
+    with open(SETTINGS.save, "wb") as f:
+        pickle.dump(
+            {
+                "counters": counters,
+                "components": counters,
+                "scores": scores,
+                "min_date": min_date.isoformat() if min_date else None,
+                "max_date": max_date.isoformat() if max_date else None,
+                "nb_objects": nb_objects,
+                "sum_confidence": sum_confidence,
+                "sum_confidence_2": sum_confidence_2,
+                "report_publish_to_create_hours": report_publish_to_create_hours,
+                "nb_indicators_updated": nb_indicators_updated,
+                "indicator_delay_hours": indicator_delay_hours,
+                "stix_validity": stix_validity,
+                "nb_validated_objects": nb_validated_objects,
+                "indicators_confidence": indicators_confidence,
+                "indicators_having_pattern": indicators_having_pattern,
+                "indicators_having_validity": indicators_having_validity,
+                "indicators_having_killchain": indicators_having_killchain,
+            },
+            f,
+        )
+    logging.debug(f"Saved state to {SETTINGS.save}")
 
 
 def update_scores():
@@ -403,6 +458,9 @@ def main():
             if time() - last_score_update > SETTINGS.every:
                 update_scores()
                 display_progress()
+                # Save state if asked
+                if SETTINGS.save:
+                    save_state()
 
                 # Send scores to an HTTP POST webhook if asked
                 if SETTINGS.webhook:
