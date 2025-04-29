@@ -76,6 +76,23 @@ The information must be made available in time for the organization. In order to
 poetry install
 ```
 
+## Configuration
+
+
+| Command Line Argument | Short Form | Environment Variable | Description                                                                 |
+|------------|------------|-----------------------|-----------------------------------------------------------------------------|
+| `--api-key`           | `-k`       | `API_KEY`            | The API key used to authenticate with the feed provider.                   |
+|  `--url`               | `-u`       | `URL`                | The URL of the CTI feed to evaluate.                                       |
+| `--feed-type`       | `-t`       | `FEED_TYPE`          | The type of the feed (e.g., `sekoia`, `custom`).                           |
+| `--since`             | `-s`       | `SINCE`              | The time range to evaluate the feed (e.g., `1y`, `6m`, `2024-01-01`, ...).                   |
+|  `--webhook`           | `-w`       | `WEBHOOK`            | The URL to send evaluation results via HTTP POST.                          |
+|  `--every`             | `-e`       | `EVERY`              | The interval in seconds to push updated scores to the webhook.             |
+|  `--pir-file`         | `-f`       | `PIR_FILE`           | The file path to a Priority Intelligence Requirements (PIR) YAML file.     |
+|  `--verbose`           | `-v`       | `VERBOSE`            | The verbosity level for logging (e.g., `-v`, `-vv`, `-vvv`).               |
+|  `--human-readable` | `-H`    | `HUMAN_READABLE`     | Display evaluation progress in a human-readable format.                    |
+|  `--save` |     | `SAVE`     | Periodically save state to given file, for incremental runs.                    |
+|  `--load` |     | `LOAD`     | Start from a previously saved state from given file.                    |
+
 ## Use cases
 
 
