@@ -5,5 +5,7 @@ __pycache__
 results.json
 /run.sh
 /docker-compose.yaml
+Dockerfile
+examples
 .pytest_cache
 /tmp

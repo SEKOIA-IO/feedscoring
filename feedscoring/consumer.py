@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from time import sleep
+from tkinter import SE
 import requests
 
 from feedscoring.settings import API_KEY, SETTINGS
@@ -85,11 +86,12 @@ def consumer(
     since: datetime | timedelta | None = None,
     types: list[str] | None = None,
 ):
-    """A factory function for consumers. Consumers are generators that yield STIX objects from a CTI feed."""
+    """A factory function or consumers. Consumers are generators that yield STIX objects from a CTI feed."""
+    since = since or SETTINGS.since
     if isinstance(since, timedelta):
         since = datetime.now() - since
-    else:
-        since = SETTINGS.since
+    elif isinstance(since, str):
+        since = datetime.fromisoformat(SETTINGS.since)
 
     try:
         c = CONSUMERS[type.lower()]

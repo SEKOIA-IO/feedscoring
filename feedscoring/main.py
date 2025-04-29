@@ -99,6 +99,7 @@ if SETTINGS.load and Path(SETTINGS.load).is_file():
         indicators_having_validity = data["indicators_having_validity"]
         indicators_having_killchain = data["indicators_having_killchain"]
         SETTINGS.since = max_date + timedelta(microseconds=1) if max_date else None
+    logging.info(f"Loaded state from {SETTINGS.load}, start consuming from {SETTINGS.since}")
 
 # Collect sectors by consuming the feed filtered on identity objects
 logging.info("Collecting sectors from the feed...")
