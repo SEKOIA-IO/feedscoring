@@ -101,13 +101,19 @@ if SETTINGS.load and Path(SETTINGS.load).is_file():
         SETTINGS.since = max_date + timedelta(microseconds=1) if max_date else None
     logging.info(f"Loaded state from {SETTINGS.load}, start consuming from {SETTINGS.since}")
 
-# Collect sectors by consuming the feed filtered on identity objects
-logging.info("Collecting sectors from the feed...")
 SECTORS = {}
-for o in consumer(types=["identity"], since=None):
-    if o.get("identity_class") == "class" and o.get("sectors"):
-        SECTORS[o["id"]] = o["sectors"][0]
-logging.info(f"Collected {len(SECTORS)} sectors")
+
+
+def collect_sectors():
+    """
+    Collect sectors by consuming the feed filtered on identity objects
+    """
+    logging.info("Collecting sectors from the feed...")
+    for o in consumer(types=["identity"], since=None):
+        if o.get("identity_class") == "class" and o.get("sectors"):
+            SECTORS[o["id"]] = o["sectors"][0]
+    logging.info(f"Collected {len(SECTORS)} sectors")
+    return SECTORS
 
 
 def save_state():
@@ -362,6 +368,27 @@ def display_progress():
         )
 
 
+def post_webhook():
+    r = requests.post(
+        SETTINGS.webhook,
+        json={
+            "scores": scores,
+            "components": components,
+            "score": scores["global"]["score"],
+            "feed_url": SETTINGS.url,
+            "earliest": min_date.isoformat() if min_date else None,
+            "latest": max_date.isoformat() if max_date else None,
+            "nb_consumed": nb_objects,
+        },
+        headers={
+            "Content-Type": "application/json",
+            **{k: v for h in SETTINGS.webhook_header for k, v in [h.split("=")]},
+        },
+    )
+    r.raise_for_status()
+    return r
+
+
 # Consume the CTI feed and update the scores in real-time
 def main():
     global sum_confidence
@@ -379,6 +406,7 @@ def main():
     global max_date
     last_score_update = time()
 
+    collect_sectors()
     try:
         for o in consumer():
             try:
@@ -464,21 +492,10 @@ def main():
                     save_state()
 
                 # Send scores to an HTTP POST webhook if asked
+                # adding custom headers if they were provided using --webhook-header command line argument
                 if SETTINGS.webhook:
                     try:
-                        r = requests.post(
-                            SETTINGS.webhook,
-                            json={
-                                "scores": scores,
-                                "components": components,
-                                "score": scores["global"]["score"],
-                                "feed_url": SETTINGS.url,
-                                "earliest": min_date.isoformat(),
-                                "latest": max_date.isoformat(),
-                                "nb_consumed": nb_objects,
-                            },
-                        )
-                        r.raise_for_status()
+                        post_webhook()
                     except Exception as e:
                         logging.error(e)
 

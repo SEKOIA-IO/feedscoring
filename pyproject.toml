@@ -1,6 +1,6 @@
 [project]
 name = "feedscoring"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = [
     {name = "Jerome Fellus",email = "jerome.fellus@sekoia.fr"}
@@ -15,7 +15,8 @@ dependencies = [
     "rich (>=13.9.4,<14.0.0)",
     "orjson (>=3.10.15,<4.0.0)",
     "stix2-validator (>=3.2.0,<4.0.0)",
-    "pyyaml (>=6.0.2,<7.0.0)"
+    "pyyaml (>=6.0.2,<7.0.0)",
+    "requests-mock (>=1.12.1,<2.0.0)"
 ]
 
 [build-system]
