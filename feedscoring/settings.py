@@ -16,12 +16,18 @@ parser.add_argument("-s", "--since", help="Consume objects since given date (in 
 parser.add_argument("-t", "--type", help="Feed type", default=os.getenv("FEED_TYPE", "TAXII"))
 parser.add_argument("--batch-size", help="Consumption batch size", default=os.getenv("BATCH_SIZE", 10000))
 parser.add_argument("--webhook", help="An HTTP POST webhook URL to push results to", default=os.getenv("WEBHOOK"))
+parser.add_argument(
+    "--webhook-header",
+    help="Add an HTTP header to the webhook calls in <header>=<value> format (can be supplied multiple times)",
+    action="append",
+    default=os.getenv("WEBHOOK_HEADERS", "").split(",") if os.getenv("WEBHOOK_HEADERS") else [],
+)
 parser.add_argument("--every", type=str, help="Score update frequency", default=os.getenv("EVERY", 2))
 parser.add_argument("--load", help="Start from a previously saved state from given file", default=os.getenv("LOAD"))
 parser.add_argument("--save", help="Periodically save state to given file", default=os.getenv("SAVE"))
 
-
 SETTINGS = parser.parse_args()
+
 API_KEY = os.getenv("API_KEY", "") or getpass.getpass("Enter your API key: ")
 
 SETTINGS.since = parse_duration(SETTINGS.since) if SETTINGS.since else None

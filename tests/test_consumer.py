@@ -1,13 +1,8 @@
 from datetime import datetime, timedelta
 import inspect
 import os
-from unittest import skipIf
 
 
-@skipIf(
-    not os.getenv("URL") or not os.getenv("API_KEY"),
-    "No URL or API_KEY environment variables set",
-)
 def test_sekoia_consumer():
     from feedscoring.consumer import sekoia_feed_consumer
 
@@ -26,10 +21,6 @@ def test_sekoia_consumer():
         break
 
 
-@skipIf(
-    not os.getenv("URL") or not os.getenv("API_KEY"),
-    "No URL or API_KEY environment variables set",
-)
 def test_consumer():
     from feedscoring.consumer import consumer
 
@@ -48,10 +39,6 @@ def test_consumer():
         break
 
 
-@skipIf(
-    not os.getenv("URL") or not os.getenv("API_KEY"),
-    "No URL or API_KEY environment variables set",
-)
 def test_consumer_since():
     from feedscoring.consumer import consumer
 
@@ -74,10 +61,6 @@ def test_consumer_since():
         break
 
 
-@skipIf(
-    not os.getenv("URL") or not os.getenv("API_KEY"),
-    "No URL or API_KEY environment variables set",
-)
 def test_consumer_types():
     from feedscoring.consumer import consumer
 

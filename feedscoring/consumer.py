@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from time import sleep
-from tkinter import SE
 import requests
 
 from feedscoring.settings import API_KEY, SETTINGS
