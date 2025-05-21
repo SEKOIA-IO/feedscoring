@@ -92,6 +92,7 @@ poetry install
 |  `--human-readable` | `-H`    | `HUMAN_READABLE`     | Display evaluation progress in a human-readable format.                    |
 |  `--save` |     | `SAVE`     | Periodically save state to given file, for incremental runs.                    |
 |  `--load` |     | `LOAD`     | Start from a previously saved state from given file.                    |
+| `--webhook-header` | | `WEBHOOK_HEADERS` | Additional headers to include in the HTTP POST request to the webhook, in K=V format. Env var may be supplied in K=V,K=V,K=V format |
 
 ## Use cases
 
