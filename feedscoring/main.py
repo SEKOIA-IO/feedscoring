@@ -386,7 +386,33 @@ def post_webhook():
         },
     )
     r.raise_for_status()
-    return r
+
+
+def post_webhook_graphql():
+    r = requests.post(
+        SETTINGS.webhook_graphql,
+        json={
+            "query": f"""
+mutation {{
+    addScoring(
+        name: "{SETTINGS.name}"
+        provider_name: "{SETTINGS.provider_name}"
+        applicable_score: {round(scores["relevance"]["applicability"])}
+        accurate_score: {round(scores["relevance"]["accuracy"])}
+        timely_score: {round(scores["relevance"]["timeliness"])}
+        machine_readable: {round(scores["usability"]["machine_readability"])}
+        consumable: {round(scores["usability"]["consumability"])}
+        actionable: {round(scores["usability"]["actionability"])}
+    )
+}}
+                """
+        },
+        headers={
+            "Content-Type": "application/json",
+            **{k: v for h in SETTINGS.webhook_header for k, v in [h.split("=")]},
+        },
+    )
+    r.raise_for_status()
 
 
 # Consume the CTI feed and update the scores in real-time
@@ -496,6 +522,11 @@ def main():
                 if SETTINGS.webhook:
                     try:
                         post_webhook()
+                    except Exception as e:
+                        logging.error(e)
+                if SETTINGS.webhook_graphql:
+                    try:
+                        post_webhook_graphql()
                     except Exception as e:
                         logging.error(e)
 

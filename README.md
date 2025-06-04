@@ -93,6 +93,9 @@ poetry install
 |  `--save` |     | `SAVE`     | Periodically save state to given file, for incremental runs.                    |
 |  `--load` |     | `LOAD`     | Start from a previously saved state from given file.                    |
 | `--webhook-header` | | `WEBHOOK_HEADERS` | Additional headers to include in the HTTP POST request to the webhook, in K=V format. Env var may be supplied in K=V,K=V,K=V format |
+| `--webhook-graphql` | | `WEBHOOK_GRAPHQL` | If set, the webhook will be called with a GraphQL payload instead of JSON POST |
+| `--name` | | `NAME` | The name of the feed, used in the webhook payload and logs. |
+| `--provider-name` | | `PROVIDER_NAME` | The name of the feed provider, used in the webhook payload and logs. |
 
 ## Use cases
 

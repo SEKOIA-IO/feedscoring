@@ -1,4 +1,5 @@
 import argparse
+from ast import parse
 import os
 from pathlib import Path
 import yaml
@@ -25,6 +26,9 @@ parser.add_argument(
 parser.add_argument("--every", type=str, help="Score update frequency", default=os.getenv("EVERY", 2))
 parser.add_argument("--load", help="Start from a previously saved state from given file", default=os.getenv("LOAD"))
 parser.add_argument("--save", help="Periodically save state to given file", default=os.getenv("SAVE"))
+parser.add_argument("--name", help="Name of the feed", default=os.getenv("NAME", ""))
+parser.add_argument("--provider-name", help="Name of the feed's provider", default=os.getenv("PROVIDER_NAME", ""))
+parser.add_argument("--webhook-graphql", help="A GraphQL webhook URL to push results to", default=os.getenv("WEBHOOK_GRAPHQL"))
 
 SETTINGS = parser.parse_args()
 
