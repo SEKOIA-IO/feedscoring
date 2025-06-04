@@ -9,25 +9,34 @@ from feedscoring.utils import parse_datetime
 def taxii_consumer(
     url: str,
     api_key: str | None = None,
-    page_size=10000,
+    page_size=2000,
     since: datetime | None = None,
     types: list[str] | None = None,
 ):
     """A consumer for standard TAXII feeds."""
-    from taxii2client import Collection
+    from taxii2client.v21 import Collection
 
     c = Collection(url)
     if api_key:
         c._conn.session.headers.update({"Authorization": f"Bearer {api_key}"} if api_key else {})
 
-    for page in c.get_objects(
-        as_pages=True,
-        page_size=page_size,
-        modified_after=since,
-        type=types,
-    ):
-        for obj in page.get("objects", []):
-            yield obj
+    next_offset = None
+    try:
+        while True:
+            page = c.get_objects(
+                accept="application/taxii+json;version=2.1",
+                limit=page_size,
+                added_after=since,
+                type=types,
+                **({"next": next_offset} if next_offset else {}),
+            )
+            for obj in page.get("objects", []):
+                yield obj
+            if not page.get("more"):
+                return
+            next_offset = page.get("next")
+    except requests.HTTPError as e:
+        raise Exception(f"Error consuming TAXII endpoint: {e.response.text}") from e
 
 
 def sekoia_feed_consumer(
