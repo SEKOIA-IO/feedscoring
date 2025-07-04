@@ -393,7 +393,7 @@ def post_webhook_graphql():
         SETTINGS.webhook_graphql,
         json={
             "query": f"""
-mutation {{
+mutation addScoring {{
     addScoring(
         name: "{SETTINGS.name}"
         provider_name: "{SETTINGS.provider_name}"
@@ -403,9 +403,21 @@ mutation {{
         machine_readable: {round(scores["usability"]["machine_readability"])}
         consumable: {round(scores["usability"]["consumability"])}
         actionable: {round(scores["usability"]["actionability"])}
-    )
+    ){{
+       id
+       name
+       provider_name
+       applicable_score
+       accurate_score
+       timely_score
+       machine_readable
+       consumable
+       actionable
+       created_at
+       updated_at
+    }}
 }}
-                """
+"""
         },
         headers={
             "Content-Type": "application/json",
